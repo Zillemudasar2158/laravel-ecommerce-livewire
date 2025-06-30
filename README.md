@@ -43,7 +43,7 @@ This is a fully functional E-Commerce platform built using **Laravel 12**, **Liv
 ---
 
 ## 📂 Project Structure
-
+```bash
 app/
 ├── Http/
 │ ├── Controllers/
