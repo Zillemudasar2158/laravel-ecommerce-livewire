@@ -13,7 +13,7 @@ This is a fully functional e-commerce platform built with Laravel and Livewire. 
   - Discount Price Handling
   - Auto Product Code Generator
 - 🏷️ **Category & Subcategory Management**
-- 🔍 **Livewire-Based Product Search** (Search by title, category, subcategory)
+- 🔍 **Product Search** (Search by title, category, subcategory)
 - 🛒 **Dynamic Shopping Cart** with:
   - Add to Cart
   - Quantity Increment/Decrement
