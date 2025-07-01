@@ -51,7 +51,7 @@ class Cartlist extends Component
 
     public function refreshCart()
     {
-        $this->cart = Cart::with('product')->where('user_id', auth()->id())->get();
+        $this->cart = Cart::with('product')->where('user_id', auth()->id())->latest()->get();
     }
     public function confirmOrder()
     {

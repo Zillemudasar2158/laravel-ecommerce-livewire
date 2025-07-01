@@ -32,6 +32,39 @@ This is a fully functional E-Commerce platform built using **Laravel 12**, **Liv
 
 ---
 
+## 🧠 Application Workflow
+
+1. 👤 User registers and logs in using Laravel Breeze
+2. 🛍️ User browses products by category/subcategory
+3. ➕ Adds products to cart dynamically (Livewire-based)
+4. 📝 Enters shipping address and chooses payment method (COD)
+5. 📧 Receives email confirmation with order summary
+6. 🛠 Admin views all orders and updates status via Livewire panel
+
+---
+
+## 🔗 Core Relationships
+
+- A **User** has many **Orders**
+- An **Order** has many **Products** through **OrderItems**
+- A **Category** has many **Subcategories**
+- A **Product** belongs to a **Category** and **Subcategory**
+- A **User** may have **Wishlist Items** and **Product Reviews**
+
+---
+
+## 🌐 API Roadmap (Coming Soon)
+
+We are planning to add RESTful API endpoints to integrate mobile apps and external services.
+
+- `GET /api/products` – List all products
+- `POST /api/orders` – Create a new order
+- `GET /api/user/orders` – Fetch user-specific orders
+- JSON response structure will be standardized
+- Postman collection will be published in future update
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Framework:** Laravel 12
@@ -73,15 +106,10 @@ Clone the repository:
 
 📝 Todo / Upcoming Features
 
- Online Payment Gateway Integration
+🛠 Online Payment Gateway Integration *(Coming Soon)*  
+🛠 Wishlist & Product Reviews *(In Progress)*  
+🛠 Coupon System *(Planned)*
 
- Admin Dashboard UI
-
- Wishlist & Product Reviews
-
- Coupon System
-
- User Profile Management
 
 👨‍💻 Author
 Muhammad Zill-e-Muddassar

@@ -14,7 +14,7 @@
         <button wire:click="decrement" 
                 class="px-3 py-1 bg-gray-300 rounded text-xl font-bold hover:bg-gray-400">−</button>
 
-        <input type="text" readonly value="{{ $quantity }}"
+        <input type="text" name="text" readonly value="{{ $quantity }}"
                class="w-10 text-center border rounded px-2 py-1 focus:outline-none"/>
 
         <button wire:click="increment" 

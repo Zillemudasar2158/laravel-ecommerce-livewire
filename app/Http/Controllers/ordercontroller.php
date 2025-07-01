@@ -23,7 +23,7 @@ class ordercontroller extends Controller implements HasMiddleware
     public function list()
     {
         $user_id=auth()->user()->id;
-        $orders=Order::where('user_id',$user_id)->get();
+        $orders=Order::where('user_id',$user_id)->latest()->get();
         return view('orders.list',compact('orders'));
     }
     public function orderfind($data)
@@ -47,7 +47,7 @@ class ordercontroller extends Controller implements HasMiddleware
     }
     public function alllistorder()
     {
-        $orders=Order::with('OrderItem')->get();
+        $orders=Order::with('OrderItem')->latest()->get();
         return view('orders.list',compact('orders'));
     }
 }
