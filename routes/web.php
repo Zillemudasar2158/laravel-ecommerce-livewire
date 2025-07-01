@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\SubcatController;
 use App\Http\Controllers\ordercontroller;
+use App\Http\Controllers\CouponController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[CategoryController::class,'welcome'])->name('home');
@@ -93,6 +94,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/orderdetail/{is}','orderfind')->name('orderdetail.list');
         Route::get('/order/{id}/edit','edit')->name('order.edit');
         Route::put('/order/{id}/','update')->name('order.update');
+    });
+    Route::controller(CouponController::class)->group(function(){
+        Route::get('/createcoupon','create')->name('coupon.create');
+        Route::post('/storecoupon','store')->name('coupon.store');
+        Route::get('/listcoupon','list')->name('coupon.list');
     });
 });
         Route::get('/productlist',[ProductController::class,'list'])->name('product.list');

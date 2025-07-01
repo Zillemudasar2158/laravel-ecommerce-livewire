@@ -1,3 +1,32 @@
+@can('view category')
+<div x-data="{ open: false }" class="relative inline-block text-left">
+    <!-- Parent Dropdown Button -->
+   <button @click="open = !open" class="text-white text-sm px-1 py-1 bg-[#1C2331] rounded-md inline-flex items-center">
+        Add
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+    </button>
+
+    <!-- Main Dropdown -->
+    <div x-show="open" @click.away="open = false" x-transition class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+        <div class="relative group">
+            <a href="{{route('category.list')}}"
+               class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                {{ __('Add Category') }}
+            </a>
+        </div>
+        <div class="relative group">
+            <a href="{{route('coupon.list')}}"
+               class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                {{ __('Add Coupon') }}
+            </a>
+        </div>
+    </div>
+</div>
+@endcan
+
+
 <div x-data="{ open: false }" class="relative inline-block text-left">
     <!-- Parent Dropdown Button -->
    <button @click="open = !open" class="text-white text-sm px-1 py-1 bg-[#1C2331] rounded-md inline-flex items-center">

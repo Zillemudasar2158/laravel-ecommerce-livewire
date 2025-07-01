@@ -50,13 +50,7 @@
                         <x-nav-link class="text-white" :href="route('allorder.list')" :active="request()->routeIs('allorder.list')">
                             {{ __('Manage orders') }}
                         </x-nav-link>
-                    @endcan
-
-                    @can('view category')
-                        <x-nav-link class="text-white" :href="route('category.list')" :active="request()->routeIs('category.list')">
-                            {{ __('Add Category') }}
-                        </x-nav-link>
-                    @endcan
+                    @endcan                    
 
                     <x-nav_men />
                 </div>
