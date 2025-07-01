@@ -20,8 +20,8 @@
             @foreach($cart as $index => $item)
                 @php
                     $price = $item->product->price;
-                    $discount = $item->product->price_off;
-                    $total = ($price - ($price * $discount / 100)) * $item->quantity;
+                    $discountitem = $item->product->price_off;
+                    $total = ($price - ($price * $discountitem / 100)) * $item->quantity;
                     $grandTotal += $total;
                 @endphp
                 <tr class="border-b hover:bg-gray-50">
@@ -47,13 +47,47 @@
                     <td class="px-4 py-3">{{ $item->product->price_off }}%</td>
                     <td class="px-4 py-3 font-semibold">Rs. {{ number_format($total) }}</td>
                 </tr>
-            @endforeach
+            @endforeach   
             <tr>
+                <td colspan="8" class="px-4 py-3 text-right font-semibold text-lg"> 
+                    @if (session()->has('coupon'))
+                        Coupon Applied: <strong>{{ session('coupon.code') }}</strong> 
+                        (Rs. {{ number_format(session('coupon.discount')) }} Off)
+                        <button wire:click="$set('couponCode', '')" 
+                                wire:click.prevent="removeCoupon"
+                                class="bg-red-600 text-white px-3 py-1 ml-2 rounded">
+                            Cancel Coupon
+                        </button>
+                    @else
+                        Apply Coupon:
+                        <input type="text" wire:model.defer="couponCode" placeholder="Enter code..." class="border rounded px-3 py-1 ml-2">
+                        <button wire:click="applyCoupon" class="bg-slate-700 text-white px-3 py-1 ml-2 rounded">Apply</button>
+                    @endif
+                </td>
+                    @if (session()->has('success'))
+                        <span class="text-green-600 ml-3">{{ session('success') }}</span>
+                    @elseif (session()->has('error'))
+                        <span class="text-red-600 ml-3">{{ session('error') }}</span>
+                    @endif
+            </tr>
+            <tr>
+                @php
+                    $subtotal = $cart->sum(fn($item) =>
+                        ($item->product->price - ($item->product->price * $item->product->price_off / 100)) * $item->quantity
+                    );
+
+                    $couponDiscount = $discount ?? session('coupon.discount') ?? 0;
+
+                    $grandTotal = $subtotal - $couponDiscount;
+                @endphp
+
                 <td colspan="6" class="px-4 py-3 text-right font-semibold text-lg">Grand Total:</td>
                 <td class="px-4 py-3 text-right font-bold text-lg text-green-700">Rs. {{ number_format($grandTotal) }}</td>
             </tr>
         </tbody>
     </table>
+
+
 
 @if($grandTotal > 0)
 <div class="mt-10 flex justify-center">

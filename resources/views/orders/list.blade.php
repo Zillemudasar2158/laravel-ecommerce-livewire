@@ -16,6 +16,8 @@
                                 <th class="px-4 py-3 text-center">#</th>
                                 <th class="px-4 py-3">Order No</th>
                                 <th class="px-4 py-3">Total amount</th>
+                                <th class="px-4 py-3">Coupon code</th>
+                                <th class="px-4 py-3">Discount</th>
                                 <th class="px-4 py-3">Payment</th>
                                 <th class="px-4 py-3">Shipping</th>
                                 <th class="px-4 py-3">Status</th>
@@ -38,6 +40,12 @@
                                     </td>
                                     <td class="px-4 py-2 font-semibold text-gray-800 whitespace-nowrap">
                                         Rs. {{ $order->total_amount }}
+                                    </td>
+                                    <td class="px-4 py-2 font-semibold text-gray-800 whitespace-nowrap">
+                                         {{ $order->coupon_code }}
+                                    </td>
+                                    <td class="px-4 py-2 font-semibold text-gray-800 whitespace-nowrap">
+                                        Rs. {{ $order->discount }}
                                     </td>
                                     <td class="px-4 py-2 text-gray-700 whitespace-nowrap">
                                         {{ $order->payment_method === 'cod' ? 'Cash on Delivery' : 'Credit / Debit Card' }}
